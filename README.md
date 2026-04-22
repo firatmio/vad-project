@@ -17,7 +17,7 @@ The pipeline processes audio in four stages:
 
 ## Visualization
 
-![Speech Detection Result](docs/result.png)
+![Speech Detection Result](results/result.png)
 
 Green regions indicate detected speech segments across the audio timeline.
 
