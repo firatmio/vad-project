@@ -53,6 +53,9 @@ if __name__ == "__main__":
 
     result = get_test_detect()
     speech_sayisi = len([f for f in result if f["type"] == "speech"])
-    print(f"DEBUG: Elimizde toplam {speech_sayisi} tane speech frame'i var.")
     groups = grouping(result)
-    print(groups)
+    sample_rate, data = read_wav_file()
+    frame_size = 20
+    actual_frame_size = int(sample_rate * (frame_size / 1000))
+    segments = segmenter(result, data, actual_frame_size)
+    export_segments(segments, sample_rate)

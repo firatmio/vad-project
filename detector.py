@@ -20,12 +20,11 @@ def is_silence_or_speech(energy: int, zcr: float) -> SilenceOrSpeech:
 
 
 def detect_speech(result):
-    result = []
+    result_ = []
     for frame in result:
         energy, zcr = frame
-        result.append(is_silence_or_speech(energy, zcr))
-    # return smoothing(result)
-    return result
+        result_.append(is_silence_or_speech(energy, zcr))
+    return smoothing(result_)
 
 
 def smoothing(result):
