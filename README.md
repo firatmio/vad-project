@@ -1,4 +1,4 @@
-# 🔊 Voice Activity Detection (VAD)
+# Voice Activity Detection (VAD)
 
 A lightweight, dependency-minimal Voice Activity Detection system built from scratch in Python. No pre-trained models — just signal processing fundamentals.
 
@@ -15,7 +15,7 @@ The pipeline processes audio in four stages:
 
 ---
 
-## 📊 Visualization
+## Visualization
 
 ![Speech Detection Result](docs/result.png)
 
