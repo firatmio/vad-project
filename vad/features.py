@@ -15,17 +15,15 @@ def features(frames: list[np.ndarray]):
         result.append([rms_energy(frame), zero_crossing_rate(frame)])
     return result
 
-    # Output tipi ve anlamı: list[list[float]], her bir frame için [rms_energy, zero_crossing_rate] listesi
-
 
 def get_test_result():
-    from reading import get_test_result
+    from reading import get_test_result as gtr
 
-    return features(get_test_result())
+    return features(gtr())
 
 
 if __name__ == "__main__":
-    from reading import get_test_result
+    from reading import get_test_result as gtr
 
-    frames = get_test_result()
+    frames = gtr()
     print(features(frames))

@@ -1,9 +1,9 @@
 import os
 
+import pandas as pd
 import soundfile as sf
 
 from __types__ import SilenceOrSpeech
-from reading import read_wav_file
 
 
 def grouping(result: list[SilenceOrSpeech]) -> list[list[SilenceOrSpeech]]:
@@ -48,14 +48,12 @@ def export_segments(segments, sample_rate, output_dir="output"):
     return True
 
 
-if __name__ == "__main__":
-    from detector import get_test_detect
+def final_export(segments, sample_rate, output_dir="output"):
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
-    result = get_test_detect()
-    speech_sayisi = len([f for f in result if f["type"] == "speech"])
-    groups = grouping(result)
-    sample_rate, data = read_wav_file()
-    frame_size = 20
-    actual_frame_size = int(sample_rate * (frame_size / 1000))
-    segments = segmenter(result, data, actual_frame_size)
-    export_segments(segments, sample_rate)
+    for i, segment in enumerate(segments):
+        file_path = os.path.join(output_dir, f"{i}.wav")
+        sf.write(file_path, segment, sample_rate)
+
+    return True
